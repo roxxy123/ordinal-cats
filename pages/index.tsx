@@ -27,7 +27,7 @@ const Home: NextPage = ({collections}: props) => {
 
       <main className='bg-orange-500 rounded-lg p-10 shadow-xl shadow-black items-center ' >
         <div className='grid space-x-3 md:grid-cols-1 lg:grid-cols-1 2xl:grid-cols-4'>
-          {collections.map(collection => (
+          {key=collections.map(collection => (
 
             
             <div className='flex flex-col items-center'>
