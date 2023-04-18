@@ -1,15 +1,16 @@
 import Image from 'next/image'
 import Head  from "next/head"
-import NextPage  from 'next'
 import { sanityClient, urlFor  } from "../sanity"
 import Link from 'next/link'
+import {Collection} from '../typings';
+import { GetServerSideProps } from 'next';
 
-interface props {
+interface Props {
   collections: Collection[]
 
 }
 
-const Home: NextPage = ({collections}: props) => {
+const Home=({collections}: Props) => {
   return (
 
     
@@ -30,8 +31,8 @@ const Home: NextPage = ({collections}: props) => {
           {collections?.map(collection => (
 
             
-            <div key={collection.id} className='flex flex-col items-center'>
-              <Image className='h-70 w-50 rounded-2xl object-cover' src={urlFor(collection.mainImage).url()} alt="" />
+            <div key={collection.slug.current} className='flex flex-col items-center'>
+              <img className='h-70 w-50 rounded-2xl object-cover' src={urlFor(collection.mainImage).url()} alt="" />
             <div>
             <h2 className='text-3xl items-center text-center'>{collection.title}</h2>
             <p className='mt-2 text-sm text-white text-center'>{collection.description}</p>
@@ -52,7 +53,7 @@ const Home: NextPage = ({collections}: props) => {
 
 export default Home
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const  getServerSideProps: GetServerSideProps = async () => {
   const query = `*[_type == "collection"]{
     _id,
       title,

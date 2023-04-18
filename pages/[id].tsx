@@ -1,22 +1,23 @@
 import React, {useState , useEffect} from 'react'
 import { useAddress, useDisconnect, useMetamask, useNFTDrop } from "@thirdweb-dev/react";
-import { GetServerSideProps } from "next";
+import { GetServerSideProps }  from 'next';
 import { sanityClient, urlFor } from '../sanity';
 import Link from 'next/link'
 import {BigNumber} from 'ethers'
 import toast, { Toaster } from "react-hot-toast";
 import Image  from 'next/image';
+import { Creator, Collection } from '../typings'
 
-interface   Props {
+interface Props {
   collection: Collection
 }
 
 function Dropsite({collection}: Props) {
 
-  const [claimedSupply, setClaimedSupply] = useState<number>(0);
-  const [totalSupply, setTotalSupply] = useState<BigNumber>();
-  const [priceInEth, setPriceInEth] =useState<string>();
-  const [loading , setLoading] = useState<boolean>(true);
+  const [claimedSupply, setClaimedSupply] = useState<number>(0)
+  const [totalSupply, setTotalSupply] = useState<BigNumber>()
+  const [priceInEth, setPriceInEth] =useState<string>()
+  const [loading , setLoading] = useState<boolean>(true)
   const nftDrop = useNFTDrop(collection.address)
   
   //Auth
@@ -126,6 +127,7 @@ const mintNft = () => {
 
 
   return (
+   
     <div className='font-press flex h-screen flex-col lg:grid lg:grid-cols-10 '>
 
 <Toaster position='bottom-center'/>
@@ -178,7 +180,7 @@ const mintNft = () => {
       {/* Content */}
 
       <div className='mt-10 flex flex-1 flex-col items-center space-y-6 text-center lg:space-y-0 lg:justify-center'>
-        <Image className='w-80 object-contain pb-10 lg:h-40' src={urlFor(collection.mainImage).url()} alt="" />
+        <img className='w-80 object-contain pb-10 lg:h-40' src={urlFor(collection.mainImage).url()} alt="" />
 
         <h1 className='text-xl font-bold lg:text-2xl lg:font-bold'>{collection.title}</h1>
 
