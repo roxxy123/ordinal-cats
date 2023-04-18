@@ -31,7 +31,7 @@ const Home: NextPage = ({collections}: props) => {
 
             
             <div className='flex flex-col items-center'>
-              <img className='h-70 w-50 rounded-2xl object-cover' src={urlFor(collection.mainImage).url()} alt="" />
+              <Image className='h-70 w-50 rounded-2xl object-cover' src={urlFor(collection.mainImage).url()} alt="" />
             <div>
             <h2 className='text-3xl items-center text-center'>{collection.title}</h2>
             <p className='mt-2 text-sm text-white text-center'>{collection.description}</p>
