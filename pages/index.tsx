@@ -27,11 +27,11 @@ const Home: NextPage = ({collections}: props) => {
 
       <main className='bg-orange-500 rounded-lg p-10 shadow-xl shadow-black items-center ' >
         <div className='grid space-x-3 md:grid-cols-1 lg:grid-cols-1 2xl:grid-cols-4'>
-          {key=collections.map(collection => (
+          {collections?.map(collection => (
 
             
-            <div className='flex flex-col items-center'>
-              <img className='h-70 w-50 rounded-2xl object-cover' src={urlFor(collection.mainImage).url()} alt="" />
+            <div key={collection.id} className='flex flex-col items-center'>
+              <Image className='h-70 w-50 rounded-2xl object-cover' src={urlFor(collection.mainImage).url()} alt="" />
             <div>
             <h2 className='text-3xl items-center text-center'>{collection.title}</h2>
             <p className='mt-2 text-sm text-white text-center'>{collection.description}</p>

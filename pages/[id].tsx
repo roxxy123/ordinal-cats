@@ -1,10 +1,11 @@
 import React, {useState , useEffect} from 'react'
 import { useAddress, useDisconnect, useMetamask, useNFTDrop } from "@thirdweb-dev/react";
 import { GetServerSideProps } from "next";
-import { sanityClient, urlFor } from 'sanity';
+import { sanityClient, urlFor } from '../sanity';
 import Link from 'next/link'
 import {BigNumber} from 'ethers'
 import toast, { Toaster } from "react-hot-toast";
+import Image  from 'next/image';
 
 interface   Props {
   collection: Collection
@@ -166,7 +167,7 @@ const mintNft = () => {
 
       <hr className='my-2 border'/>
       {address && (
-        <p className='text-xs text-yellow-300 text-center'>You're logged in with wallet
+        <p className='text-xs text-yellow-300 text-center'>You are logged in with wallet
          <span className='text-black'> {address.substring(0,5)}...{address.substring(address.length-5)}</span>
         </p>
       )}
@@ -177,7 +178,7 @@ const mintNft = () => {
       {/* Content */}
 
       <div className='mt-10 flex flex-1 flex-col items-center space-y-6 text-center lg:space-y-0 lg:justify-center'>
-        <img className='w-80 object-contain pb-10 lg:h-40' src={urlFor(collection.mainImage).url()} alt="" />
+        <Image className='w-80 object-contain pb-10 lg:h-40' src={urlFor(collection.mainImage).url()} alt="" />
 
         <h1 className='text-xl font-bold lg:text-2xl lg:font-bold'>{collection.title}</h1>
 
@@ -185,7 +186,7 @@ const mintNft = () => {
             <p className='font-press pt-2 text-xl text-red-600 animate-bounce'>Loading...</p>
 
            ):(
-            <p className='font-press pt-2 text-xl text-green-600'>{claimedSupply}/{totalSupply?.toString()} NFT'S Claimed</p>
+            <p className='font-press pt-2 text-xl text-green-600'>{claimedSupply}/{totalSupply?.toString()} NFTs Claimed</p>
 
            )} 
        </div>
